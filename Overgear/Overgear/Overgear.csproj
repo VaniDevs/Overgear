@@ -12,5 +12,6 @@
 
   <ItemGroup>
     <Compile Remove="Controllers\BootController.cs" />
+    <Compile Remove="Models\Shoe %28copy%29.cs" />
   </ItemGroup>
 </Project>
