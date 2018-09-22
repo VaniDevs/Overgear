@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Overgear.Models;
 
 namespace Overgear.Migrations
 {
     [DbContext(typeof(OvergearContext))]
-    partial class OvergearContextModelSnapshot : ModelSnapshot
+    [Migration("20180922191410_AddedShirtModel")]
+    partial class AddedShirtModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,23 +35,6 @@ namespace Overgear.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Boot");
-                });
-
-            modelBuilder.Entity("Overgear.Models.HighVisibility", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Description");
-
-                    b.Property<int>("Quantity");
-
-                    b.Property<int>("Size");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("HighVisibility");
                 });
 
             modelBuilder.Entity("Overgear.Models.Shirt", b =>
