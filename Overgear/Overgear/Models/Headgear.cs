@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Overgear.Models
 {
-    public class Outerwear
+    public class Headgear
     {
         public int ID { get; set; }
         public string Description { get; set; }
