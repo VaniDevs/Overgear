@@ -1,0 +1,17 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Overgear", "Overgear\Overgear.csproj", "{DF013F0B-3408-4636-B553-1A42E2CC5722}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DF013F0B-3408-4636-B553-1A42E2CC5722}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF013F0B-3408-4636-B553-1A42E2CC5722}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF013F0B-3408-4636-B553-1A42E2CC5722}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF013F0B-3408-4636-B553-1A42E2CC5722}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
