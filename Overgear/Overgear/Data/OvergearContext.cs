@@ -19,5 +19,13 @@ namespace Overgear.Models
         public DbSet<Overgear.Models.Shirt> Shirt { get; set; }
 
         public DbSet<Overgear.Models.HighVisibility> HighVisibility { get; set; }
+
+        public DbSet<Overgear.Models.Pants> Pants { get; set; }
+
+        public DbSet<Overgear.Models.Outerwear> Outerwear { get; set; }
+
+        public DbSet<Overgear.Models.Gloves> Gloves { get; set; }
+
+        public DbSet<Overgear.Models.Headgear> Headgear { get; set; }
     }
 }

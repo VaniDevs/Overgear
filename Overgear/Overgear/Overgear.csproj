@@ -12,6 +12,8 @@
 
   <ItemGroup>
     <Compile Remove="Controllers\BootController.cs" />
+    <Compile Remove="Migrations\20180922194548_AddedBunchofModels.cs" />
+    <Compile Remove="Migrations\20180922194548_AddedBunchofModels.Designer.cs" />
     <Compile Remove="Models\Shoe %28copy%29.cs" />
   </ItemGroup>
 </Project>
