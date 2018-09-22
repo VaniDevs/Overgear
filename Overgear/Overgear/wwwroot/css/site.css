@@ -10,12 +10,26 @@ body {
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    margin-top: 20px;
+}
+
+/*nav bar*/
+.navbar {
+    min-height: 75px; 
+}
+
+.navbar-collapse {
+    margin-top: 1%;
+}
+
+#logo {
+    width: 150px;
 }
 
 /* Carousel */
 .carousel-caption p {
-    font-size: 20px;
-    line-height: 1.4;
+font-size: 20px;
+line-height: 1.4;
 }
 
 /* Make .svg files in the carousel display properly in older browsers */
