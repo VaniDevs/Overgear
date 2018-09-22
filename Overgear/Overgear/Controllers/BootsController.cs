@@ -148,5 +148,16 @@ namespace Overgear.Controllers
         {
             return _context.Boot.Any(e => e.ID == id);
         }
+
+        // Just return a list of states - in a real-world application this would call
+        // into data access layer to retrieve states from a database.
+        private IEnumerable<int> GetAllSizes()
+        {
+            return new List<int>
+            {
+                5, 6, 7, 8, 9,
+                10, 11, 12, 13
+            };
+        }
     }
 }

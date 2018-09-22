@@ -140,7 +140,7 @@ namespace Overgear.Migrations
 
                     b.Property<int>("Quantity");
 
-                    b.Property<string>("Size");
+                    b.Property<int>("Size");
 
                     b.HasKey("ID");
 

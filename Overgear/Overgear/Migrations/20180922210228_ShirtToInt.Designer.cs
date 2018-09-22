@@ -9,8 +9,8 @@ using Overgear.Models;
 namespace Overgear.Migrations
 {
     [DbContext(typeof(OvergearContext))]
-    [Migration("20180922195151_TestMigration")]
-    partial class TestMigration
+    [Migration("20180922210228_ShirtToInt")]
+    partial class ShirtToInt
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -142,7 +142,7 @@ namespace Overgear.Migrations
 
                     b.Property<int>("Quantity");
 
-                    b.Property<string>("Size");
+                    b.Property<int>("Size");
 
                     b.HasKey("ID");
 
