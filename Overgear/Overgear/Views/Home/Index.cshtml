@@ -2,7 +2,6 @@
     ViewData["Title"] = "Home Page";
 }
 
-
 <div class="row">
     <div class="container">
         <div>
@@ -22,6 +21,32 @@
         <div>
             <h3>Calendar</h3>
             <p>Here is the calendar.</p>
+            <div class="container">
+                <div id='calendar'></div>
+            </div>
+
+            <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.min.css">
+            <script src="https://fullcalendar.io/js/fullcalendar-2.1.1/lib/moment.min.js"></script>
+            <script src="https://fullcalendar.io/js/fullcalendar-2.1.1/lib/jquery.min.js"></script>
+            <script src="https://fullcalendar.io/js/fullcalendar-2.1.1/lib/jquery-ui.custom.min.js"></script>
+            <script src="https://fullcalendar.io/js/fullcalendar-2.1.1/fullcalendar.min.js"></script>
+            <script type="text/javascript">
+
+			$(document).ready(function () {
+				$('#calendar').fullCalendar({
+        			header: {
+            			left: 'prev,next today',
+            			center: 'title',
+            			right: 'month,agendaWeek,agendaDay'
+					},
+            		firstDay: 1, //The day that each week begins (Monday=1)
+            		slotMinutes: 60,
+            		events: '@Url.RouteUrl(new{ action="GetEvents", controller="Home"})'
+        		});
+    		});
+            </script>
+
         </div>
 
     </div>
