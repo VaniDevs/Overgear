@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 namespace Overgear.Models
@@ -9,7 +10,11 @@ namespace Overgear.Models
         public int ID { get; set; }
         public string Description { get; set; }
         public string Colour { get; set; }
-        public string Size { get; set; }
+
+        [Range(0, Int32.MaxValue)]
+        public int Size { get; set; }
+        
+        [Range(0, Int32.MaxValue)]
         public int Quantity { get; set; }
     }
 }
