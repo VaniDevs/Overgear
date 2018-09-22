@@ -15,7 +15,7 @@ body {
 
 /*nav bar*/
 .navbar {
-    min-height: 75px; 
+    min-height: 75px !important; 
 }
 
 .navbar-collapse {
@@ -27,7 +27,7 @@ body {
 }
 
 .navbar-inverse .navbar-nav > li > a {
-    color: #ccc;
+    color: #ccc !important;
     font-size: 1.1em;
 }
     /* Carousel */
