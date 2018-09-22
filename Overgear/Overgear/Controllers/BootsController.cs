@@ -18,10 +18,16 @@ namespace Overgear.Controllers
             _context = context;
         }
 
-        // GET: Boots
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            return View(await _context.Boot.ToListAsync());
+            var results = from x in _context.Boot
+                          select x;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                results = results.Where(s => s.Description.Contains(searchString));
+            }
+
+            return View(await results.ToListAsync());
         }
 
         // GET: Boots/Details/5
@@ -147,17 +153,6 @@ namespace Overgear.Controllers
         private bool BootExists(int id)
         {
             return _context.Boot.Any(e => e.ID == id);
-        }
-
-        // Just return a list of states - in a real-world application this would call
-        // into data access layer to retrieve states from a database.
-        private IEnumerable<int> GetAllSizes()
-        {
-            return new List<int>
-            {
-                5, 6, 7, 8, 9,
-                10, 11, 12, 13
-            };
         }
     }
 }

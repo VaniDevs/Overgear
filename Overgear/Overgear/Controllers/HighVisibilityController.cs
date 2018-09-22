@@ -18,10 +18,16 @@ namespace Overgear.Controllers
             _context = context;
         }
 
-        // GET: HighVisibility
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            return View(await _context.HighVisibility.ToListAsync());
+            var results = from x in _context.HighVisibility
+                          select x;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                results = results.Where(s => s.Description.Contains(searchString));
+            }
+
+            return View(await results.ToListAsync());
         }
 
         // GET: HighVisibility/Details/5

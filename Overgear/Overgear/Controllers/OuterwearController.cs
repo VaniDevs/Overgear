@@ -18,10 +18,16 @@ namespace Overgear.Controllers
             _context = context;
         }
 
-        // GET: Outerwear
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            return View(await _context.Outerwear.ToListAsync());
+            var results = from x in _context.Outerwear
+                        select x;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                results = results.Where(s => s.Description.Contains(searchString));
+            }
+
+            return View(await results.ToListAsync());
         }
 
         // GET: Outerwear/Details/5

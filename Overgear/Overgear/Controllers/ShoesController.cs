@@ -9,28 +9,28 @@ using Overgear.Models;
 
 namespace Overgear.Controllers
 {
-    public class PantsController : Controller
+    public class ShoesController : Controller
     {
         private readonly OvergearContext _context;
 
-        public PantsController(OvergearContext context)
+        public ShoesController(OvergearContext context)
         {
             _context = context;
         }
 
         public async Task<IActionResult> Index(string searchString)
         {
-            var pants = from x in _context.Pants
-                        select x;
+            var shoes = from x in _context.Shoe
+                         select x;
             if (!String.IsNullOrEmpty(searchString))
             {
-                pants = pants.Where(s => s.Description.Contains(searchString));
+                shoes = shoes.Where(s => s.Description.Contains(searchString));
             }
 
-            return View(await pants.ToListAsync());
+            return View(await shoes.ToListAsync());
         }
 
-        // GET: Pants/Details/5
+        // GET: Shoes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -38,39 +38,39 @@ namespace Overgear.Controllers
                 return NotFound();
             }
 
-            var pants = await _context.Pants
+            var shoe = await _context.Shoe
                 .FirstOrDefaultAsync(m => m.ID == id);
-            if (pants == null)
+            if (shoe == null)
             {
                 return NotFound();
             }
 
-            return View(pants);
+            return View(shoe);
         }
 
-        // GET: Pants/Create
+        // GET: Shoes/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Pants/Create
+        // POST: Shoes/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Description,Colour,Size,Quantity")] Pants pants)
+        public async Task<IActionResult> Create([Bind("ID,Description,Size,Quantity")] Shoe shoe)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(pants);
+                _context.Add(shoe);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(pants);
+            return View(shoe);
         }
 
-        // GET: Pants/Edit/5
+        // GET: Shoes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -78,22 +78,22 @@ namespace Overgear.Controllers
                 return NotFound();
             }
 
-            var pants = await _context.Pants.FindAsync(id);
-            if (pants == null)
+            var shoe = await _context.Shoe.FindAsync(id);
+            if (shoe == null)
             {
                 return NotFound();
             }
-            return View(pants);
+            return View(shoe);
         }
 
-        // POST: Pants/Edit/5
+        // POST: Shoes/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Description,Colour,Size,Quantity")] Pants pants)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Description,Size,Quantity")] Shoe shoe)
         {
-            if (id != pants.ID)
+            if (id != shoe.ID)
             {
                 return NotFound();
             }
@@ -102,12 +102,12 @@ namespace Overgear.Controllers
             {
                 try
                 {
-                    _context.Update(pants);
+                    _context.Update(shoe);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!PantsExists(pants.ID))
+                    if (!ShoeExists(shoe.ID))
                     {
                         return NotFound();
                     }
@@ -118,10 +118,10 @@ namespace Overgear.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(pants);
+            return View(shoe);
         }
 
-        // GET: Pants/Delete/5
+        // GET: Shoes/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -129,30 +129,30 @@ namespace Overgear.Controllers
                 return NotFound();
             }
 
-            var pants = await _context.Pants
+            var shoe = await _context.Shoe
                 .FirstOrDefaultAsync(m => m.ID == id);
-            if (pants == null)
+            if (shoe == null)
             {
                 return NotFound();
             }
 
-            return View(pants);
+            return View(shoe);
         }
 
-        // POST: Pants/Delete/5
+        // POST: Shoes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var pants = await _context.Pants.FindAsync(id);
-            _context.Pants.Remove(pants);
+            var shoe = await _context.Shoe.FindAsync(id);
+            _context.Shoe.Remove(shoe);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool PantsExists(int id)
+        private bool ShoeExists(int id)
         {
-            return _context.Pants.Any(e => e.ID == id);
+            return _context.Shoe.Any(e => e.ID == id);
         }
     }
 }

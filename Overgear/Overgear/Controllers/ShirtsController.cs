@@ -23,8 +23,7 @@ namespace Overgear.Controllers
         //{
         //    return View(await _context.Shirt.ToListAsync());
         //}
-
-        // Overloaded for searching.
+        
         public async Task<IActionResult> Index(string searchString)
         {
             var shirts = from x in _context.Shirt
