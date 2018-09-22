@@ -19,9 +19,22 @@ namespace Overgear.Controllers
         }
 
         // GET: Shirts
-        public async Task<IActionResult> Index()
+        //public async Task<IActionResult> Index()
+        //{
+        //    return View(await _context.Shirt.ToListAsync());
+        //}
+
+        // Overloaded for searching.
+        public async Task<IActionResult> Index(string searchString)
         {
-            return View(await _context.Shirt.ToListAsync());
+            var shirts = from x in _context.Shirt
+                         select x;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                shirts = shirts.Where(s => s.Description.Contains(searchString));
+            }
+
+            return View(await shirts.ToListAsync());
         }
 
         // GET: Shirts/Details/5
