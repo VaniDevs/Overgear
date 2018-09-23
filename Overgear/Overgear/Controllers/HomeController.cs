@@ -70,15 +70,8 @@ namespace Overgear.Controllers
 
         public IActionResult Inventory()
         {
-            var results = from x in _context.Boot
-                          select x;
-
-            List<Boot> bootList = new List<Models.Boot>();
-
-            bootList = (from boot in _context.Boot
-                        select boot).ToList();
-
-            ViewData["Boots"] = bootList;
+            ViewData["Boots"] = (from boot in _context.Boot select boot).ToList();
+            ViewData["Gloves"] = (from glove in _context.Gloves select glove).ToList();
 
             return View();
         }

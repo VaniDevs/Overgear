@@ -7,6 +7,7 @@
 
 @{
     IEnumerable<Boot> boots = ViewData["Boots"] as IEnumerable<Boot>;
+    IEnumerable<Gloves> gloves = ViewData["Gloves"] as IEnumerable<Gloves>;
 }
 
 <table>
@@ -25,4 +26,22 @@
             <td>@boot.Quantity</td>
         </tr>
     }
-</table> 
+</table>
+
+<table>
+    <tr>
+        <th>Description</th>
+        <th>Colour</th>
+        <th>Size</th>
+        <th>Quantity</th>
+    </tr>
+    @foreach (Gloves glove in gloves)
+    {
+        <tr>
+            <td>@glove.Description</td>
+            <td>@glove.Colour</td>
+            <td>@glove.Size</td>
+            <td>@glove.Quantity</td>
+        </tr>
+    }
+</table>
