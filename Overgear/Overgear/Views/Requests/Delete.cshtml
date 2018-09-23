@@ -1,4 +1,4 @@
-﻿@model Overgear.Models.Outerwear
+﻿@model Overgear.Models.Request
 
 @{
     ViewData["Title"] = "Delete";
@@ -8,26 +8,32 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Outerwear</h4>
+    <h4>Request</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Description)
+            @Html.DisplayNameFor(model => model.FirstName)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Description)
+            @Html.DisplayFor(model => model.FirstName)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Colour)
+            @Html.DisplayNameFor(model => model.LastName)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Colour)
+            @Html.DisplayFor(model => model.LastName)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Size)
+            @Html.DisplayNameFor(model => model.Email)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Size)
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ItemType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ItemType)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Quantity)

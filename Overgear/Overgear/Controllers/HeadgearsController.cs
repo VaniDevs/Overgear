@@ -9,28 +9,22 @@ using Overgear.Models;
 
 namespace Overgear.Controllers
 {
-    public class HeadgearController : Controller
+    public class HeadgearsController : Controller
     {
         private readonly OvergearContext _context;
 
-        public HeadgearController(OvergearContext context)
+        public HeadgearsController(OvergearContext context)
         {
             _context = context;
         }
 
-        public async Task<IActionResult> Index(string searchString)
+        // GET: Headgears
+        public async Task<IActionResult> Index()
         {
-            var results = from x in _context.Headgear
-                          select x;
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                results = results.Where(s => s.Description.Contains(searchString));
-            }
-
-            return View(await results.ToListAsync());
+            return View(await _context.Headgear.ToListAsync());
         }
 
-        // GET: Headgear/Details/5
+        // GET: Headgears/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -48,18 +42,18 @@ namespace Overgear.Controllers
             return View(headgear);
         }
 
-        // GET: Headgear/Create
+        // GET: Headgears/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Headgear/Create
+        // POST: Headgears/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Description,Colour,Size,Quantity")] Headgear headgear)
+        public async Task<IActionResult> Create([Bind("ID,Description,Colour,Quantity")] Headgear headgear)
         {
             if (ModelState.IsValid)
             {
@@ -70,7 +64,7 @@ namespace Overgear.Controllers
             return View(headgear);
         }
 
-        // GET: Headgear/Edit/5
+        // GET: Headgears/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -86,12 +80,12 @@ namespace Overgear.Controllers
             return View(headgear);
         }
 
-        // POST: Headgear/Edit/5
+        // POST: Headgears/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Description,Colour,Size,Quantity")] Headgear headgear)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Description,Colour,Quantity")] Headgear headgear)
         {
             if (id != headgear.ID)
             {
@@ -121,7 +115,7 @@ namespace Overgear.Controllers
             return View(headgear);
         }
 
-        // GET: Headgear/Delete/5
+        // GET: Headgears/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -139,7 +133,7 @@ namespace Overgear.Controllers
             return View(headgear);
         }
 
-        // POST: Headgear/Delete/5
+        // POST: Headgears/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

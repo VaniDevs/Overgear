@@ -1,28 +1,28 @@
-﻿@model IEnumerable<Overgear.Models.HighVisibility>
+﻿@model IEnumerable<Overgear.Models.Request>
 
 @{
-    ViewData["Title"] = "High Visibility";
+    ViewData["Title"] = "Index";
 }
 
-<h2>High Visibility</h2>
+<h2>Index</h2>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<form asp-controller="HighVisibility" asp-action="Index" method="get">
-    <p>
-        Title: <input type="text" name="SearchString">
-        <input type="submit" value="Search" />
-    </p>
-</form>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Description)
+                @Html.DisplayNameFor(model => model.FirstName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Size)
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemType)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Quantity)
@@ -34,10 +34,16 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Description)
+                @Html.DisplayFor(modelItem => item.FirstName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Size)
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemType)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Quantity)

@@ -13,7 +13,11 @@ namespace Overgear.Models
         [Range(5, 13, ErrorMessage = "Please enter the size of the item.")]
         public int Size { get; set; }
 
-        [Range(1, Int32.MaxValue, ErrorMessage = "Please enter the quantity of the item.")]
-        public int Quantity { get; set; }
+        [Required(ErrorMessage = "Please enter the colour of the item.")]
+        public string Colour { get; set; }
+
+        [Required(ErrorMessage = "Please enter the quantity of the item.")]
+        [Range(1, Int32.MaxValue, ErrorMessage = "Please enter the correct quantity of the item.")]
+        public int? Quantity { get; set; }
     }
 }

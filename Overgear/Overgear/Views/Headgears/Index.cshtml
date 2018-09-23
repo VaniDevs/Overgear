@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Overgear.Models.Boot>
+﻿@model IEnumerable<Overgear.Models.Headgear>
 
 @{
     ViewData["Title"] = "Index";
@@ -19,9 +19,6 @@
                 @Html.DisplayNameFor(model => model.Colour)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Size)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Quantity)
             </th>
             <th></th>
@@ -35,9 +32,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Colour)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Size)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Quantity)
