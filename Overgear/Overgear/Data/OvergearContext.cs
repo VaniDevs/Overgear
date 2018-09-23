@@ -33,5 +33,7 @@ namespace Overgear.Models
         public DbSet<Overgear.Models.Request> Request { get; set; }
 
         public DbSet<Overgear.Models.Item> Item { get; set; }
+
+        public DbSet<Overgear.Models.Appointment> Appointment { get; set; }
     }
 }
