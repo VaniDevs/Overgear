@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<h2>High Visibility</h2>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -12,19 +12,18 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
+            <th>              
+                @Html.ActionLink("Description", "Index", new { sortOrder = ViewBag.DescSortParm })
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Size)
+                @Html.ActionLink("Colour", "Index", new { sortOrder = ViewBag.ColSortParm })
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Colour)
+                @Html.ActionLink("Size", "Index", new { sortOrder = ViewBag.SizeSortParm })
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Quantity)
+                @Html.ActionLink("Quantity", "Index", new { sortOrder = ViewBag.QuanSortParm })
             </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -34,10 +33,10 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Size)
+                @Html.DisplayFor(modelItem => item.Colour)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Colour)
+                @Html.DisplayFor(modelItem => item.Size)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Quantity)

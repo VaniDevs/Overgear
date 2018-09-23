@@ -42,6 +42,9 @@ namespace Overgear.Controllers
         public async Task<IActionResult> Index(string sortOrder)
         {
             ViewBag.DescSortParm = String.IsNullOrEmpty(sortOrder) ? "desc" : "";
+            ViewBag.ColSortParm = String.IsNullOrEmpty(sortOrder) ? "col" : "";
+            ViewBag.SizeSortParm = String.IsNullOrEmpty(sortOrder) ? "size" : "";
+            ViewBag.QuanSortParm = String.IsNullOrEmpty(sortOrder) ? "quan" : "";
 
             var results = from x in _context.Boot
                           select x;
@@ -50,6 +53,15 @@ namespace Overgear.Controllers
             {
                 case "desc":
                     results = results.OrderByDescending(s => s.Description);
+                    break;
+                case "col":
+                    results = results.OrderByDescending(s => s.Colour);
+                    break;
+                case "size":
+                    results = results.OrderByDescending(s => s.Size);
+                    break;
+                case "quan":
+                    results = results.OrderByDescending(s => s.Quantity);
                     break;
                 default:
                     results = results.OrderBy(s => s.Description);

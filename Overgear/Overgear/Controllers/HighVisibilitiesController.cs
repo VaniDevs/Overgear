@@ -19,10 +19,40 @@ namespace Overgear.Controllers
         }
 
         // GET: HighVisibilities
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder)
         {
-            return View(await _context.HighVisibility.ToListAsync());
+            ViewBag.DescSortParm = String.IsNullOrEmpty(sortOrder) ? "desc" : "";
+            ViewBag.ColSortParm = String.IsNullOrEmpty(sortOrder) ? "col" : "";
+            ViewBag.SizeSortParm = String.IsNullOrEmpty(sortOrder) ? "size" : "";
+            ViewBag.QuanSortParm = String.IsNullOrEmpty(sortOrder) ? "quan" : "";
+
+            var results = from x in _context.HighVisibility
+                          select x;
+
+            switch (sortOrder)
+            {
+                case "desc":
+                    results = results.OrderByDescending(s => s.Description);
+                    break;
+                case "col":
+                    results = results.OrderBy(s => s.Colour);
+                    break;
+                case "size":
+                    results = results.OrderBy(s => s.Size);
+                    break;
+                case "quan":
+                    results = results.OrderBy(s => s.Quantity);
+                    break;
+                default:
+                    results = results.OrderBy(s => s.Description);
+                    break;
+            }
+            return View(await results.ToListAsync());
         }
+        //public async Task<IActionResult> Index()
+        //{
+        //    return View(await _context.HighVisibility.ToListAsync());
+        //}
 
         // GET: HighVisibilities/Details/5
         public async Task<IActionResult> Details(int? id)
