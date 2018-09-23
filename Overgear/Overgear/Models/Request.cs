@@ -9,7 +9,6 @@ namespace Overgear.Models
     public class Request
     {
 
-
         public int ID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -19,9 +18,6 @@ namespace Overgear.Models
         
         // Use dropdown instead of text box
         public List<Item> Items { get; set; }
-
-        public string ItemType { get; set; }
-        public int Quantity { get; set; }
 
     }
 }
