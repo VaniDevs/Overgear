@@ -12,7 +12,8 @@ namespace Overgear.Models
         [Range(0, Int32.MaxValue)]
         public int Size { get; set; }
 
-        [Range(0, Int32.MaxValue)]
-        public int Quantity { get; set; }
+        [Required(ErrorMessage = "God dammit")]
+        [Range(0, Int32.MaxValue, ErrorMessage = "What is wrong with you")]
+        public int? Quantity { get; set; }
     }
 }
