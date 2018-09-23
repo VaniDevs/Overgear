@@ -2,25 +2,51 @@
     ViewData["Title"] = "Home Page";
 }
 
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(drawCharts);
+
+    function drawCharts() {
+
+        var data = google.visualization.arrayToDataTable([
+            ['Item type', 'Requests'],
+
+            ['Shoes', 19],
+            ['Pants', 14],
+            ['Shirts', 10],
+            ['Boots', 8],
+            ['Outerwear', 6],
+            ['Headgear', 3],
+            ['High visibility', 3],
+            ['Gloves', 1]
+        ]);
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data);
+    }
+</script>
+
 <div class="row">
     <div class="container">
-        <div>
-            <h3>Recent Trends</h3>
-            <p>Line chart</p>
-            <p>Bar chart</p>
+        <h3>Recent Trends</h3>
+        <div class="container">
+            <div class="row">
+                <div class="col-6 col-md-6">
+                    <h2>Pie chart</h2>
+                    <div id="piechart" style="width:500px; height:300px;"></div>
+                </div>
+                <div class="col-6 col-md-6">
+                    <h2>Line chart</h2>
+                    <div id="linechart"></div>
+                </div>
+            </div>
         </div>
-        <div>
-            <h3>Upcoming Appointments</h3>
-            <ul>
-                <p>August 17, 2:00pm - Jill Jones</p>
-                <p>August 17, 4:30pm - Matt Meyer</p>
-                <p>...</p>
-            </ul>
-            <button>Add appointment</button>
-        </div>
+
         <div>
             <h3>Calendar</h3>
-            <p>Here is the calendar.</p>
+            <button type="button" class="btn btn-primary" id="appointment">Add appointment</button>
             <div class="container">
                 <div id='calendar'></div>
             </div>
