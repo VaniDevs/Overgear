@@ -18,6 +18,34 @@ namespace Overgear.Controllers
             _context = context;
         }
 
+        // Calendar
+        public JsonResult GetEvents()
+        {
+            //var events = new List<Appointment>();
+            var events = _context.Appointment.ToList();
+            //
+
+            // Get all the events.
+            //events.Add(new Appointment()
+            //{
+            //    id = 0,
+            //    title = "John Searle",
+            //    start = new DateTime(2018, 9, 23, 9, 0, 0).ToString(),
+            //    end = new DateTime(2018, 9, 23, 9, 30, 0).ToString()
+            //});
+
+
+            //events.Add(new Appointment()
+            //{
+            //    id = 1,
+            //    title = "Jill Huang",
+            //    start = new DateTime(2018, 9, 23, 11, 0, 0).ToString(),
+            //    end = new DateTime(2018, 9, 23, 12, 30, 0).ToString()
+            //});
+
+            return Json(events.ToArray());
+        }
+
         // GET: Appointments
         public async Task<IActionResult> Index()
         {
@@ -57,6 +85,15 @@ namespace Overgear.Controllers
         {
             if (ModelState.IsValid)
             {
+                //DateTime startTime = DateTime.Parse(appointment.Start);
+                //DateTime endTime = DateTime.Parse(appointment.End);
+
+                //string newStartTime = startTime.AddHours(-7).ToString();
+                //string newEndTime = endTime.AddHours(-7).ToString();
+
+                //appointment.Start = newStartTime;
+                //appointment.End = newEndTime;
+
                 _context.Add(appointment);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
