@@ -8,7 +8,7 @@ using Overgear.Models;
 namespace Overgear.Migrations
 {
     [DbContext(typeof(OvergearContext))]
-    [Migration("20180923002302_SqlLiteMigrations")]
+    [Migration("20180923003039_SqlLiteMigrations")]
     partial class SqlLiteMigrations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
