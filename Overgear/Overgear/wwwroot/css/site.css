@@ -78,3 +78,13 @@ a:hover {
         display: none;
     }
 }
+
+#linechart {
+    width: 100%;
+    min-height: 450px;
+}
+
+#piechart {
+    width: 100%;
+    min-height: 450px;
+}
