@@ -27,23 +27,48 @@ namespace Overgear.Controllers
         {
             var viewModel = new EventViewModel();
             var events = new List<EventViewModel>();
-            start = DateTime.Today.AddDays(-14);
-            end = DateTime.Today.AddDays(-11);
 
-            for (var i = 1; i <= 5; i++)
+            events.Add(new EventViewModel()
             {
-                events.Add(new EventViewModel()
-                {
-                    id = i,
-                    title = "Event " + i,
-                    start = start.ToString(),
-                    end = end.ToString(),
-                    allDay = false
-                });
+                id = 0,
+                title = "Appointment with John Searle",
+                start = new DateTime(2018, 9, 23, 16, 0, 0).ToString(),
+                end = new DateTime(2018, 9, 23, 16, 30, 0).ToString(),
+                allDay = false
+            });
+            
 
-                start = start.AddDays(7);
-                end = end.AddDays(7);
-            }
+            events.Add(new EventViewModel()
+            {
+                id = 1,
+                title = "Appointment with Jill Huang",
+                start = new DateTime(2018, 9, 23, 18, 0, 0).ToString(),
+                end = new DateTime(2018, 9, 23, 19, 30, 0).ToString(),
+                allDay = false
+            });
+        
+
+            //List<DateTime> appointments =
+            //{
+            //    new DateTime(2018, 8, )
+            //}
+            //start = DateTime.Today.AddDays(-14);
+            //end = DateTime.Today.AddDays(-11);
+
+            //for (var i = 0; i < 5; i++)
+            //{
+            //    events.Add(new EventViewModel()
+            //    {
+            //        id = i,
+            //        title = "Event " + i,
+            //        start = start.ToString(),
+            //        end = end.ToString(),
+            //        allDay = false
+            //    });
+
+            //    start = start.AddDays(7);
+            //    end = end.AddDays(7);
+            //}
 
             return Json(events.ToArray());
         }

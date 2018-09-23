@@ -9,22 +9,22 @@ using Overgear.Models;
 
 namespace Overgear.Controllers
 {
-    public class RequestsController : Controller
+    public class ItemsController : Controller
     {
         private readonly OvergearContext _context;
 
-        public RequestsController(OvergearContext context)
+        public ItemsController(OvergearContext context)
         {
             _context = context;
         }
 
-        // GET: Requests
+        // GET: Items
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Request.ToListAsync());
+            return View(await _context.Item.ToListAsync());
         }
 
-        // GET: Requests/Details/5
+        // GET: Items/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -32,39 +32,39 @@ namespace Overgear.Controllers
                 return NotFound();
             }
 
-            var request = await _context.Request
+            var item = await _context.Item
                 .FirstOrDefaultAsync(m => m.ID == id);
-            if (request == null)
+            if (item == null)
             {
                 return NotFound();
             }
 
-            return View(request);
+            return View(item);
         }
 
-        // GET: Requests/Create
+        // GET: Items/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Requests/Create
+        // POST: Items/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,FirstName,LastName,Email")] Request request)
+        public async Task<IActionResult> Create([Bind("ID,Type,Quantity")] Item item)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(request);
+                _context.Add(item);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(request);
+            return View(item);
         }
 
-        // GET: Requests/Edit/5
+        // GET: Items/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -72,22 +72,22 @@ namespace Overgear.Controllers
                 return NotFound();
             }
 
-            var request = await _context.Request.FindAsync(id);
-            if (request == null)
+            var item = await _context.Item.FindAsync(id);
+            if (item == null)
             {
                 return NotFound();
             }
-            return View(request);
+            return View(item);
         }
 
-        // POST: Requests/Edit/5
+        // POST: Items/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,FirstName,LastName,Email")] Request request)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Type,Quantity")] Item item)
         {
-            if (id != request.ID)
+            if (id != item.ID)
             {
                 return NotFound();
             }
@@ -96,12 +96,12 @@ namespace Overgear.Controllers
             {
                 try
                 {
-                    _context.Update(request);
+                    _context.Update(item);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!RequestExists(request.ID))
+                    if (!ItemExists(item.ID))
                     {
                         return NotFound();
                     }
@@ -112,10 +112,10 @@ namespace Overgear.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(request);
+            return View(item);
         }
 
-        // GET: Requests/Delete/5
+        // GET: Items/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -123,30 +123,30 @@ namespace Overgear.Controllers
                 return NotFound();
             }
 
-            var request = await _context.Request
+            var item = await _context.Item
                 .FirstOrDefaultAsync(m => m.ID == id);
-            if (request == null)
+            if (item == null)
             {
                 return NotFound();
             }
 
-            return View(request);
+            return View(item);
         }
 
-        // POST: Requests/Delete/5
+        // POST: Items/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var request = await _context.Request.FindAsync(id);
-            _context.Request.Remove(request);
+            var item = await _context.Item.FindAsync(id);
+            _context.Item.Remove(item);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool RequestExists(int id)
+        private bool ItemExists(int id)
         {
-            return _context.Request.Any(e => e.ID == id);
+            return _context.Item.Any(e => e.ID == id);
         }
     }
 }

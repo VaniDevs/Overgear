@@ -31,5 +31,7 @@ namespace Overgear.Models
         public DbSet<Overgear.Models.Shoe> Shoe { get; set; }
 
         public DbSet<Overgear.Models.Request> Request { get; set; }
+
+        public DbSet<Overgear.Models.Item> Item { get; set; }
     }
 }
