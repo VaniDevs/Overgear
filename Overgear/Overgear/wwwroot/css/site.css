@@ -5,8 +5,13 @@ body {
     padding-bottom: 20px;
 }
 
+a {
+    color: #e03336;
+}
+
 a:hover {
     text-decoration: none !important;
+    color: #000;
 }
 
 /* Wrapping element */
