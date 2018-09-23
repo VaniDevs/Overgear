@@ -2,12 +2,15 @@
     ViewData["Title"] = "Inventory";
 }
 
-<H3>Select an item</H3>
-
 <ul class="links">
     <li>
         <a asp-controller="Boots" asp-action="Index">
-            <img alt="Boot Img" src="@Url.Content("~/images/boot-img.jpeg")">
+            <img alt="Boot Img" src="@Url.Content("~/images/boot-img.jpeg")" height="250">
+        </a>
+    </li>
+    <li>
+        <a asp-controller="Shirts" asp-action="Index">
+            <img alt="Shirt Img" src="@Url.Content("~/images/shirt-img.jpg")" height="250">
         </a>
     </li>
 </ul>
