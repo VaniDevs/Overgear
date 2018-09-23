@@ -18,27 +18,46 @@ namespace Overgear.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index(string searchString)
+        public async Task<IActionResult> Index(string sortOrder)
         {
+            ViewBag.DescSortParm = String.IsNullOrEmpty(sortOrder) ? "desc" : "";
+
             var results = from x in _context.Boot
                           select x;
 
-            List<Boot> bootList = new List<Models.Boot>();
-
-            bootList = (from boot in _context.Boot
-                        select boot).ToList();
-
-            bootList.Insert(0, new Boot { ID = 0, Description = "Select" });
-
-            ViewBag.ListOfBoots = bootList;
-
-            //if (!String.IsNullOrEmpty(searchString))
-            //{
-            //    results = results.Where(s => s.Description.Contains(searchString));
-            //}
-
+            switch (sortOrder)
+            {
+                case "desc":
+                    results = results.OrderByDescending(s => s.Description);
+                    break;
+                default:
+                    results = results.OrderBy(s => s.Description);
+                    break;
+            }
             return View(await results.ToListAsync());
         }
+
+        //public async Task<IActionResult> Index(string searchString)
+        //{
+        //    var results = from x in _context.Boot
+        //                  select x;
+
+        //    List<Boot> bootList = new List<Models.Boot>();
+
+        //    bootList = (from boot in _context.Boot
+        //                select boot).ToList();
+
+        //    bootList.Insert(0, new Boot { ID = 0, Description = "Select" });
+
+        //    ViewBag.ListOfBoots = bootList;
+
+        //    //if (!String.IsNullOrEmpty(searchString))
+        //    //{
+        //    //    results = results.Where(s => s.Description.Contains(searchString));
+        //    //}
+
+        //    return View(await results.ToListAsync());
+        //}
 
         // GET: Boots/Details/5
         public async Task<IActionResult> Details(int? id)

@@ -30,7 +30,8 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Description)
+                @*@Html.DisplayNameFor(model => model.Description)*@
+                @Html.ActionLink("Description", "Index", new { sortOrder = ViewBag.DescSortParm })
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Colour)
