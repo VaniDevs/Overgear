@@ -18,14 +18,57 @@ namespace Overgear.Controllers
             _context = context;
         }
 
+
+        //public IActionResult Index()
+        //{
+        //    List<Boot> bootList = new List<Boot>();
+
+        //    bootList = (from boot in _context.Boot
+        //                select boot).ToList();
+
+        //    bootList.Insert(0, new Boot { ID = 0, Description = "Select" });
+
+        //    ViewBag.ListofBoots = bootList;
+
+        //    return View();
+        //}
+
+        //[HttpPost]
+        //public IActionResult Index(Boot boot)
+        //{
+        //    int selectValue = boot.ID;
+
+        //    ViewBag.SelectedValue = boot.ID;
+
+        //    List<Boot> bootList = new List<Models.Boot>();
+
+        //    bootList = (from boot1 in _context.Boot
+        //                select boot).ToList();
+
+        //    bootList.Insert(0, new Boot { ID = 0, Description = "Select" });
+        //    ViewBag.ListOfBoots = bootList;
+
+        //    return View();
+        //}
+
         public async Task<IActionResult> Index(string searchString)
         {
             var results = from x in _context.Boot
                           select x;
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                results = results.Where(s => s.Description.Contains(searchString));
-            }
+
+            List<Boot> bootList = new List<Models.Boot>();
+
+            bootList = (from boot in _context.Boot
+                            select boot).ToList();
+
+            bootList.Insert(0, new Boot { ID = 0, Description = "Select" });
+
+            ViewBag.ListOfBoots = bootList;
+
+            //if (!String.IsNullOrEmpty(searchString))
+            //{
+            //    results = results.Where(s => s.Description.Contains(searchString));
+            //}
 
             return View(await results.ToListAsync());
         }
