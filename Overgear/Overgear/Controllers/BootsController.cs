@@ -18,39 +18,6 @@ namespace Overgear.Controllers
             _context = context;
         }
 
-
-        //public IActionResult Index()
-        //{
-        //    List<Boot> bootList = new List<Boot>();
-
-        //    bootList = (from boot in _context.Boot
-        //                select boot).ToList();
-
-        //    bootList.Insert(0, new Boot { ID = 0, Description = "Select" });
-
-        //    ViewBag.ListofBoots = bootList;
-
-        //    return View();
-        //}
-
-        //[HttpPost]
-        //public IActionResult Index(Boot boot)
-        //{
-        //    int selectValue = boot.ID;
-
-        //    ViewBag.SelectedValue = boot.ID;
-
-        //    List<Boot> bootList = new List<Models.Boot>();
-
-        //    bootList = (from boot1 in _context.Boot
-        //                select boot).ToList();
-
-        //    bootList.Insert(0, new Boot { ID = 0, Description = "Select" });
-        //    ViewBag.ListOfBoots = bootList;
-
-        //    return View();
-        //}
-
         public async Task<IActionResult> Index(string searchString)
         {
             var results = from x in _context.Boot
@@ -59,7 +26,7 @@ namespace Overgear.Controllers
             List<Boot> bootList = new List<Models.Boot>();
 
             bootList = (from boot in _context.Boot
-                            select boot).ToList();
+                        select boot).ToList();
 
             bootList.Insert(0, new Boot { ID = 0, Description = "Select" });
 
@@ -102,7 +69,7 @@ namespace Overgear.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Description,Size,Quantity")] Boot boot)
+        public async Task<IActionResult> Create([Bind("ID,Description,Colour,Size,Quantity")] Boot boot)
         {
             if (ModelState.IsValid)
             {
@@ -134,7 +101,7 @@ namespace Overgear.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Description,Size,Quantity")] Boot boot)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Description,Colour,Size,Quantity")] Boot boot)
         {
             if (id != boot.ID)
             {

@@ -9,22 +9,22 @@ using Overgear.Models;
 
 namespace Overgear.Controllers
 {
-    public class ShoesController : Controller
+    public class HighVisibilitiesController : Controller
     {
         private readonly OvergearContext _context;
 
-        public ShoesController(OvergearContext context)
+        public HighVisibilitiesController(OvergearContext context)
         {
             _context = context;
         }
 
-        // GET: Shoes
+        // GET: HighVisibilities
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Shoe.ToListAsync());
+            return View(await _context.HighVisibility.ToListAsync());
         }
 
-        // GET: Shoes/Details/5
+        // GET: HighVisibilities/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -32,39 +32,39 @@ namespace Overgear.Controllers
                 return NotFound();
             }
 
-            var shoe = await _context.Shoe
+            var highVisibility = await _context.HighVisibility
                 .FirstOrDefaultAsync(m => m.ID == id);
-            if (shoe == null)
+            if (highVisibility == null)
             {
                 return NotFound();
             }
 
-            return View(shoe);
+            return View(highVisibility);
         }
 
-        // GET: Shoes/Create
+        // GET: HighVisibilities/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Shoes/Create
+        // POST: HighVisibilities/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Description,Size,Colour,Quantity")] Shoe shoe)
+        public async Task<IActionResult> Create([Bind("ID,Description,Size,Colour,Quantity")] HighVisibility highVisibility)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(shoe);
+                _context.Add(highVisibility);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(shoe);
+            return View(highVisibility);
         }
 
-        // GET: Shoes/Edit/5
+        // GET: HighVisibilities/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -72,22 +72,22 @@ namespace Overgear.Controllers
                 return NotFound();
             }
 
-            var shoe = await _context.Shoe.FindAsync(id);
-            if (shoe == null)
+            var highVisibility = await _context.HighVisibility.FindAsync(id);
+            if (highVisibility == null)
             {
                 return NotFound();
             }
-            return View(shoe);
+            return View(highVisibility);
         }
 
-        // POST: Shoes/Edit/5
+        // POST: HighVisibilities/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Description,Size,Colour,Quantity")] Shoe shoe)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Description,Size,Colour,Quantity")] HighVisibility highVisibility)
         {
-            if (id != shoe.ID)
+            if (id != highVisibility.ID)
             {
                 return NotFound();
             }
@@ -96,12 +96,12 @@ namespace Overgear.Controllers
             {
                 try
                 {
-                    _context.Update(shoe);
+                    _context.Update(highVisibility);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ShoeExists(shoe.ID))
+                    if (!HighVisibilityExists(highVisibility.ID))
                     {
                         return NotFound();
                     }
@@ -112,10 +112,10 @@ namespace Overgear.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(shoe);
+            return View(highVisibility);
         }
 
-        // GET: Shoes/Delete/5
+        // GET: HighVisibilities/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -123,30 +123,30 @@ namespace Overgear.Controllers
                 return NotFound();
             }
 
-            var shoe = await _context.Shoe
+            var highVisibility = await _context.HighVisibility
                 .FirstOrDefaultAsync(m => m.ID == id);
-            if (shoe == null)
+            if (highVisibility == null)
             {
                 return NotFound();
             }
 
-            return View(shoe);
+            return View(highVisibility);
         }
 
-        // POST: Shoes/Delete/5
+        // POST: HighVisibilities/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var shoe = await _context.Shoe.FindAsync(id);
-            _context.Shoe.Remove(shoe);
+            var highVisibility = await _context.HighVisibility.FindAsync(id);
+            _context.HighVisibility.Remove(highVisibility);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ShoeExists(int id)
+        private bool HighVisibilityExists(int id)
         {
-            return _context.Shoe.Any(e => e.ID == id);
+            return _context.HighVisibility.Any(e => e.ID == id);
         }
     }
 }

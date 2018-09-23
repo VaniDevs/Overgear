@@ -19,21 +19,9 @@ namespace Overgear.Controllers
         }
 
         // GET: Shirts
-        //public async Task<IActionResult> Index()
-        //{
-        //    return View(await _context.Shirt.ToListAsync());
-        //}
-        
-        public async Task<IActionResult> Index(string searchString)
+        public async Task<IActionResult> Index()
         {
-            var shirts = from x in _context.Shirt
-                         select x;
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                shirts = shirts.Where(s => s.Description.Contains(searchString));
-            }
-
-            return View(await shirts.ToListAsync());
+            return View(await _context.Shirt.ToListAsync());
         }
 
         // GET: Shirts/Details/5
@@ -65,7 +53,7 @@ namespace Overgear.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Description,Size,Quantity")] Shirt shirt)
+        public async Task<IActionResult> Create([Bind("ID,Description,Size,Colour,Quantity")] Shirt shirt)
         {
             if (ModelState.IsValid)
             {
@@ -97,7 +85,7 @@ namespace Overgear.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Description,Size,Quantity")] Shirt shirt)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Description,Size,Colour,Quantity")] Shirt shirt)
         {
             if (id != shirt.ID)
             {
