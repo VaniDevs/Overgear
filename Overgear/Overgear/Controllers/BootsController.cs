@@ -18,10 +18,26 @@ namespace Overgear.Controllers
             _context = context;
         }
 
-        // GET: Boots
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            return View(await _context.Boot.ToListAsync());
+            var results = from x in _context.Boot
+                          select x;
+
+            List<Boot> bootList = new List<Models.Boot>();
+
+            bootList = (from boot in _context.Boot
+                        select boot).ToList();
+
+            bootList.Insert(0, new Boot { ID = 0, Description = "Select" });
+
+            ViewBag.ListOfBoots = bootList;
+
+            //if (!String.IsNullOrEmpty(searchString))
+            //{
+            //    results = results.Where(s => s.Description.Contains(searchString));
+            //}
+
+            return View(await results.ToListAsync());
         }
 
         // GET: Boots/Details/5
