@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Overgear.Models;
 
 namespace Overgear.Migrations
 {
     [DbContext(typeof(OvergearContext))]
-    partial class OvergearContextModelSnapshot : ModelSnapshot
+    [Migration("20180923164012_AppointmentMigration")]
+    partial class AppointmentMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
