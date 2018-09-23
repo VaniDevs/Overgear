@@ -10,5 +10,6 @@ namespace Overgear.Models
         public int ID { get; set; }
         public string Type { get; set; }
         public int Quantity { get; set; }
+        public int RequestID { get; set; }
     }
 }
