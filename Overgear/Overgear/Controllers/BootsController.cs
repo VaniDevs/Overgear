@@ -18,6 +18,27 @@ namespace Overgear.Controllers
             _context = context;
         }
 
+        public ActionResult IncrementQuantity(int id)
+        {
+            var boot = _context.Boot.FirstOrDefault(m => m.ID == id);
+            boot.Quantity++;
+            _context.Entry(boot).Property("Quantity").IsModified = true;
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Boots");
+        }
+
+        public ActionResult DecrementQuantity(int id)
+        {
+            var boot = _context.Boot.FirstOrDefault(m => m.ID == id);
+            boot.Quantity--;
+            _context.Entry(boot).Property("Quantity").IsModified = true;
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Boots");
+        }
+
+
         public async Task<IActionResult> Index(string sortOrder)
         {
             ViewBag.DescSortParm = String.IsNullOrEmpty(sortOrder) ? "desc" : "";

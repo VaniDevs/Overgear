@@ -59,7 +59,9 @@
                     @Html.DisplayFor(modelItem => item.Size)
                 </td>
                 <td>
+                    <a asp-action="IncrementQuantity" asp-route-id="@item.ID">+</a>
                     @Html.DisplayFor(modelItem => item.Quantity)
+                    <a asp-action="DecrementQuantity" asp-route-id="@item.ID">-</a>
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |

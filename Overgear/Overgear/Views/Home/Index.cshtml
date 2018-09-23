@@ -68,20 +68,51 @@
     }
 </script>
 
-<div class="row">
+<div>
+    <h3>Recent Trends</h3>
     <div class="container">
-        <h3>Recent Trends</h3>
-        <div class="container">
-            <div class="row">
-                <div class="col-6 col-md-6">
-                    <h3>Item popularity</h3>
-                    <div id="piechart" style="width:500px; height:300px;"></div>
-                </div>
-                <div class="col-6 col-md-6">
-                    <h3>Requests within past 30 days</h3>
-                    <div id="linechart" style="width:700px; height:300px;"></div>
-                </div>
+        <div class="row">
+            <div class="col-6 col-md-6">
+                <h3>Item popularity</h3>
+                <div class="chart" id="piechart"></div>
+            </div>
+            <div class="col-6 col-md-6">
+                <h3>Requests within past 30 days</h3>
+                <div class="chart" id="linechart"></div>
             </div>
         </div>
     </div>
+</div>
+
+<div>
+    <h3>Calendar</h3>
+    @*<button type="button" class="btn btn-primary" id="appointment">Add appointment</button>*@
+    <div class="container">
+        <div id='calendar'></div>
+    </div>
+
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.min.css">
+    <script src="https://fullcalendar.io/js/fullcalendar-2.1.1/lib/moment.min.js"></script>
+    <script src="https://fullcalendar.io/js/fullcalendar-2.1.1/lib/jquery.min.js"></script>
+    <script src="https://fullcalendar.io/js/fullcalendar-2.1.1/lib/jquery-ui.custom.min.js"></script>
+    <script src="https://fullcalendar.io/js/fullcalendar-2.1.1/fullcalendar.min.js"></script>
+    <script type="text/javascript">
+
+			$(document).ready(function () {
+				$('#calendar').fullCalendar({
+        			header: {
+            			left: 'prev,next today',
+            			center: 'title',
+                        right: 'month,agendaWeek,agendaDay'
+                        
+                    },
+
+                    timezone: 'local',
+            		firstDay: 0, //The day that each week begins (Monday=1)
+            		slotMinutes: 60,
+            		events: '@Url.RouteUrl(new{ action="GetEvents", controller="Appointments"})'
+        		});
+    		});
+    </script>
 </div>
