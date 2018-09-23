@@ -9,13 +9,15 @@
     IEnumerable<Boot> boots = ViewData["Boots"] as IEnumerable<Boot>;
 }
 
-<table>
+<table class="table">
+    <h3>Boots</h3>
     <tr>
-        <th>Description</th>
-        <th>Colour</th>
-        <th>Size</th>
-        <th>Quantity</th>
+        <th scope="col">Description</th>
+        <th scope="col">Colour</th>
+        <th scope="col">Size</th>
+        <th scope="col">Quantity</th>
     </tr>
+
     @foreach (Boot boot in boots)
     {
         <tr>
