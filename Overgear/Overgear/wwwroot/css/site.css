@@ -94,3 +94,7 @@ a:hover {
     min-height: 450px;
 }
 
+.fc-time-grid-container {
+    height: initial !important;
+}
+
