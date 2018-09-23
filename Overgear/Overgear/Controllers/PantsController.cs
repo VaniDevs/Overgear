@@ -18,16 +18,10 @@ namespace Overgear.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index(string searchString)
+        // GET: Pants
+        public async Task<IActionResult> Index()
         {
-            var pants = from x in _context.Pants
-                        select x;
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                pants = pants.Where(s => s.Description.Contains(searchString));
-            }
-
-            return View(await pants.ToListAsync());
+            return View(await _context.Pants.ToListAsync());
         }
 
         // GET: Pants/Details/5
@@ -59,7 +53,7 @@ namespace Overgear.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Description,Colour,Size,Quantity")] Pants pants)
+        public async Task<IActionResult> Create([Bind("ID,Description,Size,Colour,Quantity")] Pants pants)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +85,7 @@ namespace Overgear.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Description,Colour,Size,Quantity")] Pants pants)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Description,Size,Colour,Quantity")] Pants pants)
         {
             if (id != pants.ID)
             {

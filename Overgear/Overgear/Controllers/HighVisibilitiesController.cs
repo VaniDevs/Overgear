@@ -9,28 +9,22 @@ using Overgear.Models;
 
 namespace Overgear.Controllers
 {
-    public class HighVisibilityController : Controller
+    public class HighVisibilitiesController : Controller
     {
         private readonly OvergearContext _context;
 
-        public HighVisibilityController(OvergearContext context)
+        public HighVisibilitiesController(OvergearContext context)
         {
             _context = context;
         }
 
-        public async Task<IActionResult> Index(string searchString)
+        // GET: HighVisibilities
+        public async Task<IActionResult> Index()
         {
-            var results = from x in _context.HighVisibility
-                          select x;
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                results = results.Where(s => s.Description.Contains(searchString));
-            }
-
-            return View(await results.ToListAsync());
+            return View(await _context.HighVisibility.ToListAsync());
         }
 
-        // GET: HighVisibility/Details/5
+        // GET: HighVisibilities/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -48,18 +42,18 @@ namespace Overgear.Controllers
             return View(highVisibility);
         }
 
-        // GET: HighVisibility/Create
+        // GET: HighVisibilities/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: HighVisibility/Create
+        // POST: HighVisibilities/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Description,Size,Quantity")] HighVisibility highVisibility)
+        public async Task<IActionResult> Create([Bind("ID,Description,Size,Colour,Quantity")] HighVisibility highVisibility)
         {
             if (ModelState.IsValid)
             {
@@ -70,7 +64,7 @@ namespace Overgear.Controllers
             return View(highVisibility);
         }
 
-        // GET: HighVisibility/Edit/5
+        // GET: HighVisibilities/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -86,12 +80,12 @@ namespace Overgear.Controllers
             return View(highVisibility);
         }
 
-        // POST: HighVisibility/Edit/5
+        // POST: HighVisibilities/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Description,Size,Quantity")] HighVisibility highVisibility)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Description,Size,Colour,Quantity")] HighVisibility highVisibility)
         {
             if (id != highVisibility.ID)
             {
@@ -121,7 +115,7 @@ namespace Overgear.Controllers
             return View(highVisibility);
         }
 
-        // GET: HighVisibility/Delete/5
+        // GET: HighVisibilities/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -139,7 +133,7 @@ namespace Overgear.Controllers
             return View(highVisibility);
         }
 
-        // POST: HighVisibility/Delete/5
+        // POST: HighVisibilities/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

@@ -1,25 +1,22 @@
 ﻿@model IEnumerable<Overgear.Models.Boot>
 
 @{
-    ViewData["Title"] = "Boots";
+    ViewData["Title"] = "Index";
 }
 
-<h2>Boots</h2>
+<h2>Index</h2>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<form asp-controller="Boots" asp-action="Index" method="get">
-    <p>
-        Title: <input type="text" name="SearchString">
-        <input type="submit" value="Search" />
-    </p>
-</form>
 <table class="table">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Colour)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Size)
@@ -35,6 +32,9 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Colour)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Size)

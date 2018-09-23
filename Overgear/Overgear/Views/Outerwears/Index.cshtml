@@ -1,20 +1,14 @@
-﻿@model IEnumerable<Overgear.Models.HighVisibility>
+﻿@model IEnumerable<Overgear.Models.Outerwear>
 
 @{
-    ViewData["Title"] = "High Visibility";
+    ViewData["Title"] = "Index";
 }
 
-<h2>High Visibility</h2>
+<h2>Index</h2>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<form asp-controller="HighVisibility" asp-action="Index" method="get">
-    <p>
-        Title: <input type="text" name="SearchString">
-        <input type="submit" value="Search" />
-    </p>
-</form>
 <table class="table">
     <thead>
         <tr>
@@ -23,6 +17,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Size)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Colour)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Quantity)
@@ -38,6 +35,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Size)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Colour)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Quantity)

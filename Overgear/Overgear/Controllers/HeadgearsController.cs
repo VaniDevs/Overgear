@@ -9,28 +9,22 @@ using Overgear.Models;
 
 namespace Overgear.Controllers
 {
-    public class OuterwearController : Controller
+    public class HeadgearsController : Controller
     {
         private readonly OvergearContext _context;
 
-        public OuterwearController(OvergearContext context)
+        public HeadgearsController(OvergearContext context)
         {
             _context = context;
         }
 
-        public async Task<IActionResult> Index(string searchString)
+        // GET: Headgears
+        public async Task<IActionResult> Index()
         {
-            var results = from x in _context.Outerwear
-                        select x;
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                results = results.Where(s => s.Description.Contains(searchString));
-            }
-
-            return View(await results.ToListAsync());
+            return View(await _context.Headgear.ToListAsync());
         }
 
-        // GET: Outerwear/Details/5
+        // GET: Headgears/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -38,39 +32,39 @@ namespace Overgear.Controllers
                 return NotFound();
             }
 
-            var outerwear = await _context.Outerwear
+            var headgear = await _context.Headgear
                 .FirstOrDefaultAsync(m => m.ID == id);
-            if (outerwear == null)
+            if (headgear == null)
             {
                 return NotFound();
             }
 
-            return View(outerwear);
+            return View(headgear);
         }
 
-        // GET: Outerwear/Create
+        // GET: Headgears/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Outerwear/Create
+        // POST: Headgears/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Description,Colour,Size,Quantity")] Outerwear outerwear)
+        public async Task<IActionResult> Create([Bind("ID,Description,Colour,Quantity")] Headgear headgear)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(outerwear);
+                _context.Add(headgear);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(outerwear);
+            return View(headgear);
         }
 
-        // GET: Outerwear/Edit/5
+        // GET: Headgears/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -78,22 +72,22 @@ namespace Overgear.Controllers
                 return NotFound();
             }
 
-            var outerwear = await _context.Outerwear.FindAsync(id);
-            if (outerwear == null)
+            var headgear = await _context.Headgear.FindAsync(id);
+            if (headgear == null)
             {
                 return NotFound();
             }
-            return View(outerwear);
+            return View(headgear);
         }
 
-        // POST: Outerwear/Edit/5
+        // POST: Headgears/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Description,Colour,Size,Quantity")] Outerwear outerwear)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Description,Colour,Quantity")] Headgear headgear)
         {
-            if (id != outerwear.ID)
+            if (id != headgear.ID)
             {
                 return NotFound();
             }
@@ -102,12 +96,12 @@ namespace Overgear.Controllers
             {
                 try
                 {
-                    _context.Update(outerwear);
+                    _context.Update(headgear);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!OuterwearExists(outerwear.ID))
+                    if (!HeadgearExists(headgear.ID))
                     {
                         return NotFound();
                     }
@@ -118,10 +112,10 @@ namespace Overgear.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(outerwear);
+            return View(headgear);
         }
 
-        // GET: Outerwear/Delete/5
+        // GET: Headgears/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -129,30 +123,30 @@ namespace Overgear.Controllers
                 return NotFound();
             }
 
-            var outerwear = await _context.Outerwear
+            var headgear = await _context.Headgear
                 .FirstOrDefaultAsync(m => m.ID == id);
-            if (outerwear == null)
+            if (headgear == null)
             {
                 return NotFound();
             }
 
-            return View(outerwear);
+            return View(headgear);
         }
 
-        // POST: Outerwear/Delete/5
+        // POST: Headgears/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var outerwear = await _context.Outerwear.FindAsync(id);
-            _context.Outerwear.Remove(outerwear);
+            var headgear = await _context.Headgear.FindAsync(id);
+            _context.Headgear.Remove(headgear);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool OuterwearExists(int id)
+        private bool HeadgearExists(int id)
         {
-            return _context.Outerwear.Any(e => e.ID == id);
+            return _context.Headgear.Any(e => e.ID == id);
         }
     }
 }
