@@ -17,23 +17,6 @@
 }
 
 <table class="table">
-    <h3><a asp-controller="Headgears" asp-action="Index">Headgear</a></h3>
-    <tr>
-        <th>Description</th>
-        <th>Colour</th>
-        <th>Quantity</th>
-    </tr>
-    @foreach (Headgear headgear in headgears)
-    {
-        <tr>
-            <td>@headgear.Description</td>
-            <td>@headgear.Colour</td>
-            <td>@headgear.Quantity</td>
-        </tr>
-    }
-</table>
-
-<table class="table">
     <h3><a asp-controller="Boots" asp-action="Index">Boots</a></h3>
     <tr>
         <th>Description</th>
@@ -49,6 +32,23 @@
             <td>@boot.Colour</td>
             <td>@boot.Size</td>
             <td>@boot.Quantity</td>
+        </tr>
+    }
+</table>
+
+<table class="table">
+    <h3><a asp-controller="Headgears" asp-action="Index">Headgear</a></h3>
+    <tr>
+        <th>Description</th>
+        <th>Colour</th>
+        <th>Quantity</th>
+    </tr>
+    @foreach (Headgear headgear in headgears)
+    {
+        <tr>
+            <td>@headgear.Description</td>
+            <td>@headgear.Colour</td>
+            <td>@headgear.Quantity</td>
         </tr>
     }
 </table>
