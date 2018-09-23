@@ -5,6 +5,10 @@ body {
     padding-bottom: 20px;
 }
 
+a:hover {
+    text-decoration: none !important;
+}
+
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
@@ -30,8 +34,25 @@ body {
     color: #ccc !important;
     font-size: 1.1em;
 }
-    /* Carousel */
- .carousel-caption p {
+
+.dropdown-item {
+    display: list-item;
+    margin: 10px;
+}
+
+.dropdown-item {
+    color: #000 !important;
+}
+
+.dropdown-item:hover {
+    color: #ccc !important;
+}
+
+.navbar-inverse .navbar-nav > .open > a {
+    background: transparent !important;
+}
+/* Carousel */
+.carousel-caption p {
     font-size: 20px;
     line-height: 1.4;
 }

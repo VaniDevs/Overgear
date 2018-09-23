@@ -15,6 +15,10 @@
                   asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
             <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
         </environment>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+                crossorigin="anonymous"></script>
     </head>
     <body>
         <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -33,15 +37,25 @@
                         <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                         <li><a asp-area="" asp-controller="Requests" asp-action="Index">Requests</a></li>
                         <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="Inventory">Inventory</a></li>
-                        <li><a asp-area="" asp-controller="Boots" asp-action="Index">Boots</a></li>
-                        <li><a asp-area="" asp-controller="Shirts" asp-action="Index">Shirts</a></li>
-                        <li><a asp-area="" asp-controller="Outerwears" asp-action="Index">Outerwear</a></li>
-                        <li><a asp-area="" asp-controller="Headgears" asp-action="Index">Headgear</a></li>
-                        <li><a asp-area="" asp-controller="Pants" asp-action="Index">Pants</a></li>
-                        <li><a asp-area="" asp-controller="Gloves" asp-action="Index">Gloves</a></li>
-                        <li><a asp-area="" asp-controller="HighVisibilities" asp-action="Index">High Visibility</a></li>
+
+                        <li>
+                            @*<div class="dropdown">*@
+                                <a class="dropdown dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Products
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenu">
+                                    <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="About">About</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Inventory">Inventory</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Boots" asp-action="Index">Boots</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Shoes" asp-action="Index">Shoes</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Shirts" asp-action="Index">Shirts</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Outerwears" asp-action="Index">Outerwear</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Headgears" asp-action="Index">Headgear</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Pants" asp-action="Index">Pants</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Gloves" asp-action="Index">Gloves</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="HighVisibilities" asp-action="Index">High Visibility</a>
+                                </div>
+                        </li>
                     </ul>
                 </div>
             </div>
