@@ -8,15 +8,38 @@
 @{
     IEnumerable<Boot> boots = ViewData["Boots"] as IEnumerable<Boot>;
     IEnumerable<Gloves> gloves = ViewData["Gloves"] as IEnumerable<Gloves>;
+    IEnumerable<Headgear> headgears = ViewData["Headgears"] as IEnumerable<Headgear>;
+    IEnumerable<HighVisibility> highvisibilities = ViewData["HighVis"] as IEnumerable<HighVisibility>;
+    IEnumerable<Outerwear> outerwears = ViewData["Outerwears"] as IEnumerable<Outerwear>;
+    IEnumerable<Pants> pants = ViewData["Pants"] as IEnumerable<Pants>;
+    IEnumerable<Shirt> shirts = ViewData["Shirts"] as IEnumerable<Shirt>;
+    IEnumerable<Shoe> shoes = ViewData["Shoes"] as IEnumerable<Shoe>;
 }
+
+<table class="table">
+    <h3>Headgear</h3>
+    <tr>
+        <th>Description</th>
+        <th>Colour</th>
+        <th>Quantity</th>
+    </tr>
+    @foreach (Headgear headgear in headgears)
+    {
+        <tr>
+            <td>@headgear.Description</td>
+            <td>@headgear.Colour</td>
+            <td>@headgear.Quantity</td>
+        </tr>
+    }
+</table>
 
 <table class="table">
     <h3>Boots</h3>
     <tr>
-        <th scope="col">Description</th>
-        <th scope="col">Colour</th>
-        <th scope="col">Size</th>
-        <th scope="col">Quantity</th>
+        <th>Description</th>
+        <th>Colour</th>
+        <th>Size</th>
+        <th>Quantity</th>
     </tr>
 
     @foreach (Boot boot in boots)
@@ -45,6 +68,101 @@
             <td>@glove.Colour</td>
             <td>@glove.Size</td>
             <td>@glove.Quantity</td>
+        </tr>
+    }
+</table>
+
+<table class="table">
+    <h3>High-Visibility</h3>
+    <tr>
+        <th>Description</th>
+        <th>Colour</th>
+        <th>Size</th>
+        <th>Quantity</th>
+    </tr>
+    @foreach (HighVisibility highvis in highvisibilities)
+    {
+        <tr>
+            <td>@highvis.Description</td>
+            <td>@highvis.Colour</td>
+            <td>@highvis.Size</td>
+            <td>@highvis.Quantity</td>
+        </tr>
+    }
+</table>
+
+<table class="table">
+    <h3>Outerwear</h3>
+    <tr>
+        <th>Description</th>
+        <th>Colour</th>
+        <th>Size</th>
+        <th>Quantity</th>
+    </tr>
+    @foreach (Outerwear outerwear in outerwears)
+    {
+        <tr>
+            <td>@outerwear.Description</td>
+            <td>@outerwear.Colour</td>
+            <td>@outerwear.Size</td>
+            <td>@outerwear.Quantity</td>
+        </tr>
+    }
+</table>
+
+<table class="table">
+    <h3>Pants</h3>
+    <tr>
+        <th>Description</th>
+        <th>Colour</th>
+        <th>Size</th>
+        <th>Quantity</th>
+    </tr>
+    @foreach (Pants pnts in pants)
+    {
+        <tr>
+            <td>@pnts.Description</td>
+            <td>@pnts.Colour</td>
+            <td>@pnts.Size</td>
+            <td>@pnts.Quantity</td>
+        </tr>
+    }
+</table>
+
+<table class="table">
+    <h3>Shirts</h3>
+    <tr>
+        <th>Description</th>
+        <th>Colour</th>
+        <th>Size</th>
+        <th>Quantity</th>
+    </tr>
+    @foreach (Shirt shirt in shirts)
+    {
+        <tr>
+            <td>@shirt.Description</td>
+            <td>@shirt.Colour</td>
+            <td>@shirt.Size</td>
+            <td>@shirt.Quantity</td>
+        </tr>
+    }
+</table>
+
+<table class="table">
+    <h3>Shoes</h3>
+    <tr>
+        <th>Description</th>
+        <th>Colour</th>
+        <th>Size</th>
+        <th>Quantity</th>
+    </tr>
+    @foreach (Shoe shoe in shoes)
+    {
+        <tr>
+            <td>@shoe.Description</td>
+            <td>@shoe.Colour</td>
+            <td>@shoe.Size</td>
+            <td>@shoe.Quantity</td>
         </tr>
     }
 </table>

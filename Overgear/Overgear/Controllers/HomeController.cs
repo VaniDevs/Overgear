@@ -72,6 +72,12 @@ namespace Overgear.Controllers
         {
             ViewData["Boots"] = (from boot in _context.Boot select boot).ToList();
             ViewData["Gloves"] = (from glove in _context.Gloves select glove).ToList();
+            ViewData["Headgears"] = (from headgear in _context.Headgear select headgear).ToList();
+            ViewData["HighVis"] = (from highvis in _context.HighVisibility select highvis).ToList();
+            ViewData["Outerwears"] = (from outerwear in _context.Outerwear select outerwear).ToList();
+            ViewData["Pants"] = (from pant in _context.Pants select pant).ToList();
+            ViewData["Shirts"] = (from shirt in _context.Shirt select shirt).ToList();
+            ViewData["Shoes"] = (from shoe in _context.Shoe select shoe).ToList();
 
             return View();
         }
