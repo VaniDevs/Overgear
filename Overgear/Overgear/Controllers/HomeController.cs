@@ -10,6 +10,13 @@ namespace Overgear.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly OvergearContext _context;
+
+        public HomeController(OvergearContext context)
+        {
+            _context = context;
+        }
+
         public IActionResult Index()
         {
             return View(new EventViewModel());
@@ -63,6 +70,16 @@ namespace Overgear.Controllers
 
         public IActionResult Inventory()
         {
+            var results = from x in _context.Boot
+                          select x;
+
+            List<Boot> bootList = new List<Models.Boot>();
+
+            bootList = (from boot in _context.Boot
+                        select boot).ToList();
+
+            ViewData["Boots"] = bootList;
+
             return View();
         }
 

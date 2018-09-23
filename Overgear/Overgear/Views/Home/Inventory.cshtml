@@ -1,16 +1,29 @@
-﻿@{
+﻿@model IEnumerable<Overgear.Models.Boot>
+
+@{
     ViewData["Title"] = "Inventory";
 }
 
-<ul class="links">
-    <li>
-        <a asp-controller="Boots" asp-action="Index">
-            <img alt="Boot Img" src="@Url.Content("~/images/boot-img.jpeg")" height="250">
-        </a>
-    </li>
-    <li>
-        <a asp-controller="Shirts" asp-action="Index">
-            <img alt="Shirt Img" src="@Url.Content("~/images/shirt-img.jpg")" height="250">
-        </a>
-    </li>
-</ul>
+<h2>@ViewData["Title"]</h2>
+
+@{
+    IEnumerable<Boot> boots = ViewData["Boots"] as IEnumerable<Boot>;
+}
+
+<table>
+    <tr>
+        <th>Description</th>
+        <th>Colour</th>
+        <th>Size</th>
+        <th>Quantity</th>
+    </tr>
+    @foreach (Boot boot in boots)
+    {
+        <tr>
+            <td>@boot.Description</td>
+            <td>@boot.Colour</td>
+            <td>@boot.Size</td>
+            <td>@boot.Quantity</td>
+        </tr>
+    }
+</table>  
